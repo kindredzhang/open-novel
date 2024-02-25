@@ -29,9 +29,9 @@ class History {
           console.error('Error writing chat history:', error);
           throw error;
         }
-      }
+    }
 
-    async getMessagesByAgent(agent: string, content: string): Promise<Messages> {
+    async getMessagesByAgent(agent: string, content: string): Promise<Array<Message>> {
         // read current agent exist chat history
         const agentHistory = new History();
         const chatHistory: Array<Message> = await agentHistory.readChatHistory(agent);
@@ -42,9 +42,20 @@ class History {
         await agentHistory.writeChatHistory(agent, currentMessage);
 
         // new messages
-        const messages: Messages = {messages: chatHistory};
-        return messages;
+        return chatHistory;
     }
+
+    async writeFinal(content: string): Promise<void> {
+      const filename = "history/final.json";
+      try {
+        // Read the content of the specified file; if the file doesn't exist, return an empty array.
+        // Write the updated chat history back to the file
+        await fs.writeFile(filename, JSON.stringify(content, null, 2), 'utf-8');
+      } catch (error) {
+        console.error('Error writing chat history:', error);
+        throw error;
+      }
+  }
 }
 
 
