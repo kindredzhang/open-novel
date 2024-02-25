@@ -9,8 +9,12 @@ interface OpenAIConfig {
 // api request body model
 interface ChatRequest {
     model: string;
-    messages: Array<Message>;
+    messages: Messages;
     temperature: number;
+}
+// api request body messages (chat history)
+interface Messages {
+    messages: Array<Message>;
 }
 
 // chat history

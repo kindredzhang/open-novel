@@ -1,6 +1,5 @@
 import ConfigLoader from './OpenAiConfig';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-
 class OpenAI {
     private config: OpenAIConfig;
 
@@ -14,18 +13,19 @@ class OpenAI {
         this.config = loadedConfig;
     }
 
-    async generateText(content: string) {
+    async generateText(currentAgent: string, messages: Messages) :Promise<Message> {
         // open-ai request body
         const chatRequest: ChatRequest = {
             model: this.config.model,
-            messages: [{ role: "user", content: content }],
+            messages: messages,
             temperature: this.config.temperature,
         };
     
         try {
           const result = await this.callAPI(chatRequest);
-          // add chat history
-          return result.choices[0].message.content;
+          // get current response message and add to chat history
+          const currentResponseMessage : Message = result.choices[0].message;
+          return currentResponseMessage;
         } catch (error) {
           console.error('Error calling OpenAI API:', error);
           throw error;

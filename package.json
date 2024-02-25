@@ -3,7 +3,9 @@
   "dependencies": {
     "axios": "^1.6.7",
     "esm": "^3.2.25",
-    "openai": "^4.0.0"
+    "openai": "^4.0.0",
+    "uuid": "^9.0.1",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
