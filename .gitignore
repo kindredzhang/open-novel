@@ -3,4 +3,4 @@ node_modules/
 .vscode/
 .idea/
 
-.env.dev
+config/config.json
