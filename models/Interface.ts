@@ -1,5 +1,5 @@
 // configure file model
-interface OpenAIConfig {
+export interface OpenAIConfig {
     apiKey: string;
     apiUrl: string;
     model: string;
@@ -7,18 +7,18 @@ interface OpenAIConfig {
 }
 
 // api request body model
-interface ChatRequest {
+export interface ChatRequest {
     model: string;
     messages: Messages;
     temperature: number;
 }
 // api request body messages (chat history)
-interface Messages {
+export interface Messages {
     messages: Array<Message>;
 }
 
 // chat history
-interface Message {
+export interface Message {
     role: string;
     content: string;
 }

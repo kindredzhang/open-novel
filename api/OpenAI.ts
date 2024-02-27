@@ -2,6 +2,8 @@ import ConfigLoader from './OpenAiConfig';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import {UserRole} from '../models/Enum'
 import { History } from './History'
+import { OpenAIConfig } from './OpenAiConfig';
+import { Message, Messages, ChatRequest} from '../models/Interface';
 
 export class OpenAI {
   private config: OpenAIConfig;

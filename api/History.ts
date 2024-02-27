@@ -1,4 +1,5 @@
 import * as fs from 'fs/promises';
+import { Message, Messages, ChatRequest} from '../models/Interface';
 
 export class History {
 

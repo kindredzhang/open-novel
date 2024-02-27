@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 
-interface OpenAIConfig {
+export interface OpenAIConfig {
   apiKey: string;
   apiUrl: string;
   model: string;
