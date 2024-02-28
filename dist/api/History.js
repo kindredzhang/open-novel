@@ -42,8 +42,8 @@ export class History {
             throw error;
         }
     }
-    async writeFinal(content) {
-        const filename = "history/final.text";
+    async writeFinal(agent, content) {
+        const filename = "history/" + agent + "-" + "final.text";
         try {
             await fs.writeFile(filename, content + '*******', 'utf-8');
         }
