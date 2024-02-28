@@ -53,8 +53,8 @@ export class History {
     }
   }
 
-  public async writeFinal(content: string): Promise<void> {
-    const filename = "history/final.text";
+  public async writeFinal(agent: string, content: string): Promise<void> {
+    const filename = "history/" + agent + "-" + "final.text";
     try {
       await fs.writeFile(filename, content + '*******', 'utf-8');
     } catch (error) {

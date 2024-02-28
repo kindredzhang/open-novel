@@ -3,6 +3,8 @@ import {OpenAI} from './api/OpenAI.js';
 import { History } from './api/History.js'
 import {UserRole} from './models/Enum.js'
 import { Message} from './models/Interface.js';
+import { v4 as uuidv4 } from 'uuid';
+
 
 async function main() {
     await ConfigLoader.init()
@@ -13,7 +15,8 @@ async function main() {
     const delimiter = "_标识符_";
     const parts = inputString.split(delimiter);
 
-    const currentAgent = 111 + "write";
+    const uuid = uuidv4();
+    const currentAgent = uuid + "-" + "chat";
 
     for (let i = 0; i < parts.length; i++) {
       // 根据代理获取历史消息
@@ -25,7 +28,7 @@ async function main() {
       const chatHistory: Array<Message> = await history.readChatHistory(currentAgent);
       const responseMessage = await openai.generateText(chatHistory, currentMessage);
       // 写入final
-      await history.writeFinal(responseMessage.content + '****');
+      await history.writeFinal(currentAgent, responseMessage.content + '****');
     }
   }
 
