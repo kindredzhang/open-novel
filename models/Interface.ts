@@ -9,7 +9,7 @@ export interface OpenAIConfig {
 // api request body model
 export interface ChatRequest {
     model: string;
-    messages: Messages;
+    messages: Array<Message>;
     temperature: number;
 }
 // api request body messages (chat history)
@@ -21,4 +21,11 @@ export interface Messages {
 export interface Message {
     role: string;
     content: string;
+}
+
+export interface OpenAIConfig {
+    apiKey: string;
+    apiUrl: string;
+    model: string;
+    temperature: number;
 }

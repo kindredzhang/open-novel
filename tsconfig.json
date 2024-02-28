@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "ES6",
-    "module": "ESNext",
-    "outDir": "./dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "target": "ES2020",                         // 编译目标版本
+    "module": "ESNext",                         // 使用ES模块
+    "moduleResolution": "node",                 // 模块解析策略
+    "outDir": "./dist",                         // 输出目录
+    "rootDir": "./",                            // 源文件目录
+    "strict": true,                             // 启用所有严格类型检查选项
+    "esModuleInterop": true,                    // 允许默认导入非ES模块
+    "skipLibCheck": true,                       // 跳过库文件的类型检查
+    "forceConsistentCasingInFileNames": true,   // 强制文件名大小写一致性
+    "resolveJsonModule": true,                  // 允许导入.json文件
+    "allowSyntheticDefaultImports": true        // 允许从没有默认导出的模块中默认导入
   },
-  "include": ["./*.ts"]
+  "include": ["./**/*"],                        // 包含的文件或目录
+  "exclude": ["node_modules", "dist"]           // 排除的目录
 }

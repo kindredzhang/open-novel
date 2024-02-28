@@ -1,19 +1,19 @@
 import * as fs from 'fs/promises';
+import {OpenAIConfig} from '../models/Interface.js';
 
-export interface OpenAIConfig {
-  apiKey: string;
-  apiUrl: string;
-  model: string;
-  temperature: number;
-}
-
-class ConfigLoader {
+export class ConfigLoader {
   private static config: OpenAIConfig | null = null;
 
-  static async loadConfig(): Promise<void> {
+  static async init(): Promise<void> {
+    if (!this.config) {
+      await this.loadConfig();
+    }
+  }
+
+  private static async loadConfig(): Promise<void> {
     try {
       const content = await fs.readFile('config/config.json', 'utf-8');
-      ConfigLoader.config = JSON.parse(content) as OpenAIConfig;
+      this.config = JSON.parse(content) as OpenAIConfig;
     } catch (error) {
       console.error('Error loading config file:', error);
       throw error;
@@ -21,8 +21,6 @@ class ConfigLoader {
   }
 
   static getConfig(): OpenAIConfig | null {
-    return ConfigLoader.config;
+    return this.config;
   }
 }
-
-export default ConfigLoader;
