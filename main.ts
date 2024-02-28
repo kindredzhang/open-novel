@@ -24,10 +24,9 @@ async function main() {
       // 获取当前响应体聊天记录
       const chatHistory: Array<Message> = await history.readChatHistory(currentAgent);
       const responseMessage = await openai.generateText(chatHistory, currentMessage);
-      history.writeChatHistory(currentAgent, responseMessage);
+      // 写入final
+      await history.writeFinal(responseMessage.content + '****');
     }
-    const history = new History();
-    console.log(await history.readChatHistory(currentAgent));
   }
 
   main();

@@ -1,7 +1,6 @@
 import { ConfigLoader } from './OpenAiConfig.js';
 import axios from 'axios';
 import { UserRole } from '../models/Enum.js';
-import { History } from './History.js';
 export class OpenAI {
     constructor() {
         const loadedConfig = ConfigLoader.getConfig();
@@ -36,8 +35,6 @@ export class OpenAI {
                 return this.generateText([...updatedChatHistory, feedbackMessage], currentMessage, attempt + 1);
             }
             else {
-                const history = new History();
-                await history.writeFinal(responseMessage.content + '****');
                 return responseMessage;
             }
         }

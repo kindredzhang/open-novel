@@ -50,8 +50,6 @@ export class OpenAI {
                 };
                 return this.generateText([...updatedChatHistory, feedbackMessage], currentMessage, attempt + 1);
             } else {
-                const history = new History();
-                await history.writeFinal(responseMessage.content + '****');
                 return responseMessage;
             }
         } catch (error) {
