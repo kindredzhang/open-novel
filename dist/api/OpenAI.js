@@ -25,18 +25,18 @@ export class OpenAI {
         try {
             const result = await this.callAPI(chatRequest);
             const responseMessage = result.choices[0].message;
-            const checkMessage = await this.checkGenerateText(responseMessage.content);
-            // 如果不以"1"开头，将checkMessage追加到聊天历史并再次请求
-            if (!checkMessage.content.startsWith("1")) {
-                const feedbackMessage = {
-                    role: UserRole.USER,
-                    content: checkMessage.content
-                };
-                return this.generateText([...updatedChatHistory, feedbackMessage], currentMessage, attempt + 1);
-            }
-            else {
-                return responseMessage;
-            }
+            return responseMessage;
+            // const checkMessage = await this.checkGenerateText(responseMessage.content);
+            // // 如果不以"1"开头，将checkMessage追加到聊天历史并再次请求
+            // if (!checkMessage.content.startsWith("1")) {
+            //     const feedbackMessage: Message = {
+            //         role: UserRole.USER,
+            //         content: checkMessage.content
+            //     };
+            //     return this.generateText([...updatedChatHistory, feedbackMessage], currentMessage, attempt + 1);
+            // } else {
+            //     return responseMessage;
+            // }
         }
         catch (error) {
             console.error('Error generating text:', error);
