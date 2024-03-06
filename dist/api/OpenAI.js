@@ -10,7 +10,7 @@ export class OpenAI {
         this.config = loadedConfig;
     }
     async generateText(chatHistory, currentMessage, attempt = 0) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         const maxAttempts = 5;
         if (attempt >= maxAttempts) {
             throw new Error('Max attempt limit reached.');
@@ -44,7 +44,7 @@ export class OpenAI {
         }
     }
     async checkGenerateText(content) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         // open-ai request body
         const chatRequest = {
             model: this.config.model,

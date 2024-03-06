@@ -18,7 +18,7 @@ export class OpenAI {
   }
 
     async generateText(chatHistory: Array<Message>, currentMessage: Message, attempt: number = 0): Promise<Message> {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         const maxAttempts = 5;
 
@@ -58,7 +58,7 @@ export class OpenAI {
     }
   
     async checkGenerateText(content: string): Promise<Message> {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // open-ai request body
         const chatRequest: ChatRequest = {

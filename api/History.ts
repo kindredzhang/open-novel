@@ -52,14 +52,16 @@ export class History {
         throw error;
     }
   }
-
+  
   public async writeFinal(agent: string, content: string): Promise<void> {
-    const filename = "history/" + agent + "-" + "final.text";
-    try {
-      await fs.writeFile(filename, content + '*******', 'utf-8');
-    } catch (error) {
-      console.error('Error writing chat history:', error);
-      throw error;
-    }
+      const filename = "history/" + agent + "-" + "final.text";
+      try {
+          // 追加文字到文件末尾
+          await fs.appendFile(filename,  '\n' + content + '*******', 'utf-8');
+      } catch (error) {
+          console.error('Error writing chat history:', error);
+          throw error;
+      }
   }
+  
 }

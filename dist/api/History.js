@@ -45,7 +45,8 @@ export class History {
     async writeFinal(agent, content) {
         const filename = "history/" + agent + "-" + "final.text";
         try {
-            await fs.writeFile(filename, content + '*******', 'utf-8');
+            // 追加文字到文件末尾
+            await fs.appendFile(filename, '\n' + content + '*******', 'utf-8');
         }
         catch (error) {
             console.error('Error writing chat history:', error);
