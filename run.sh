@@ -7,4 +7,4 @@ rm -rf dist
 tsc
 
 # 运行编译后的 JavaScript 文件
-node ./endpoint/main.js
+node ./dist/endpoint/main.js

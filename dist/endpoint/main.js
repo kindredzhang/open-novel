@@ -11,16 +11,16 @@ app.post('/generateText', async (req, res) => {
     try {
         await ConfigLoader.init();
         const openai = new OpenAI();
-        const { inputList } = req.body;
-        if (!Array.isArray(inputList)) {
+        const { promptList } = req.body;
+        if (!Array.isArray(promptList)) {
             throw new Error('inputList must be an array');
         }
         const uuid = uuidv4();
         const currentAgent = uuid + "-" + "chat";
         const responseMessages = [];
-        for (let i = 0; i < inputList.length; i++) {
+        for (let i = 0; i < promptList.length; i++) {
             const history = new History();
-            const currentMessage = { role: UserRole.USER, content: "帮我扩写一下下边这句话:" + inputList[i] };
+            const currentMessage = { role: UserRole.USER, content: "帮我扩写一下下边这句话:" + promptList[i] };
             await history.writeChatHistory(currentAgent, currentMessage);
             const chatHistory = await history.readChatHistory(currentAgent);
             const responseMessage = await openai.generateText(chatHistory, currentMessage);
