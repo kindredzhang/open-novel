@@ -1,4 +1,4 @@
-import {ConfigLoader} from './api/OpenAiConfig.js';
+import {ConfigLoader} from './config/OpenAiConfig.js';
 import {OpenAI} from './api/OpenAI.js';
 import { History } from './api/History.js'
 import {UserRole} from './models/Enum.js'

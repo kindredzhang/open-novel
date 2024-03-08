@@ -1,0 +1,16 @@
+openAi:
+  apiKey: "sk-********************************"
+  apiUrl: "https://api.chatgpt.com/v1/chat/completions"
+  model: "gpt-3.5-turbo"
+  temperature: 0.9
+
+claude:
+  apiKey: "sk-****************************************************************"
+  model: "claude-2.1"
+
+postgres:
+  user: "your_username"
+  password: "your_password"
+  host: "localhost"
+  port: 5432
+  database: "your_database_name"

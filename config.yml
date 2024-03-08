@@ -1,0 +1,16 @@
+openAi:
+  apiKey: "sk-goMtsK28TXKRKvuT0337D0BfD4Bb4443B3657f669bAf784e"
+  apiUrl: "https://api.chatgptid.net/v1/chat/completions"
+  model: "gpt-3.5-turbo"
+  temperature: 0.9
+
+claude:
+  apiKey: "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"
+  model: "claude-2.1"
+  
+postgres:
+  user: "postgres"
+  password: "Kindredz155256-"
+  host: "112.124.6.68"
+  port: 5432
+  database: "postgres"

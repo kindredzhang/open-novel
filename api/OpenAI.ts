@@ -1,4 +1,4 @@
-import {ConfigLoader} from './OpenAiConfig.js';
+import {ConfigLoader} from '../config/OpenAiConfig.js';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import {UserRole} from '../models/Enum.js'
 import { OpenAIConfig } from '../models/Interface.js';
