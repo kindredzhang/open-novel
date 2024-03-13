@@ -1,5 +1,5 @@
-import { Message } from "../models/response/history/HistoryQueryDto";
-import sequelize from "../config/DatabaseConfig";
+import { Message } from "../models/response/history/HistoryQueryDto.js";
+import sequelize from "../config/DatabaseConfig.js";
 import { QueryTypes } from "sequelize";
 
 export async function getMessagesForNovel(novelId: number): Promise<Array<Message>> {  
