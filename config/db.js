@@ -10,9 +10,4 @@ const client = new Client({
   connectionString: connectionString,
 });
 
-client.connect()
-  .then(() => {
-    console.log('Connected to the database');
-    client.end();
-  })
-  .catch(error => console.error('Error:', error));
+export { client };
