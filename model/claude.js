@@ -18,7 +18,7 @@ const config = loadConfig();
 const fetchClaude = async (novelId, messages) => {
   try {
     const responseData = await fetchAndCheckMessage(messages);
-    insertChatHistory("user", responseData.content, novelId, 0)
+    await insertChatHistory("user", responseData.content, novelId, 0)
     return responseData;
   } catch (error) {
     console.error('Error:', error.message);

@@ -15,5 +15,24 @@ async function insertNovel(name) {
     }
 }
 
+async function getNovelById(novelId) {
+    try {
+        const result = await client.query(
+            'SELECT * FROM public.novel WHERE id = $1',
+            [id]
+        );
 
-export { insertNovel }
+        if (result.rows.length === 0) {
+            // 如果未找到匹配的小说，则返回 null 或抛出错误
+            return null;
+        }
+
+        console.log('Retrieved novel by ID:', result.rows[0]);
+        return result.rows[0]; // 返回查询到的小说数据
+    } catch (error) {
+        console.error('Error retrieving novel by ID:', error);
+        throw error; // 将错误抛出以便在调用代码中处理
+    }
+}
+
+export { insertNovel, getNovelById }

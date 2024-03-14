@@ -1,18 +1,16 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { prompt } from '../config.js';
+import { generateText } from  '../services/novelService.js'
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
 
-app.post('/generateText', (req, res) => {
-    const { novelId, promptList } = req.body;
-    
-    promptList.unshift(prompt);
-
-    res.send('Data received successfully!');
+app.post('/generateText', async (req, res) => {
+    const {novelId, promptList} = req.body;
+    const generatedText = await generateText(novelId, promptList);
+    res.send(generatedText);
 });
 
 // 启动服务器
