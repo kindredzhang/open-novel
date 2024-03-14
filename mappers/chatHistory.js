@@ -54,4 +54,4 @@ async function queryMessagesByNovelId(novelId) {
     }
 }
 
-export { insertChatHistory, queryChatHistory }
+export { insertChatHistory, queryChatHistory, queryMessagesByNovelId }

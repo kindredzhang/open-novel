@@ -13,4 +13,9 @@ const claude = {
   maxToken: 300,
 };
 
-export { database, claude };
+const prompt = {
+  firstMessage: '扩写这句话',
+  checkMessage: '检查冒号分隔符后的逻辑是否合理，如果逻辑合理只需要回复我是，如果逻辑不合理只需要用指导他人的口吻告知我不合理的原因'
+}
+
+export { database, claude , prompt};
